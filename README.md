@@ -41,7 +41,7 @@ This project is an extension of its previous version and leverages its usability
 
   
 
-Default: Using FOVRule as default. If need please change the config in HTML page.
+Default: Using FOVEditRule as default. If need please change the config in HTML page.
 
   
 
@@ -53,7 +53,7 @@ Default: Using FOVRule as default. If need please change the config in HTML page
 
 3. Click "Render" to create the 3D environment.
 
-4. Click "load" to initialize MediaPlayer according to JSON description.
+4. Click "Load" to initialize MediaPlayer according to JSON description.
 
 5. Click "Play" and "Pause" to control the player.
 
