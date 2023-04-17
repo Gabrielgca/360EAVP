@@ -13,5 +13,20 @@
 		[[{"src": "", "width": "960", "height": "960", "x": 0, "y": 0, "z": 480, "rx": 0, "ry": 180, "rz": 0}]]
 	],
 	"audio": "",
-	"ssresults": ""
+	"edits":
+			{
+			"edit" : [
+							{
+							"frame" : 0,
+							"type": "",
+							"region_of_interest": [                                                                 
+													{
+															"rank": 0,
+															"ROI_theta": 0
+
+													}
+													]     
+							}
+			]
+		}
 }
