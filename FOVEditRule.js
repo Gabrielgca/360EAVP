@@ -46,7 +46,6 @@ function FOVEditRuleClass() {
         var currentFrame = $scope.frameNumber.get();
         var currentBuffer = dashMetrics.getCurrentBufferLevel('video');
         
-
         let frameRate = $scope.videoFrameRate;
 
         let editInfoJSON = $scope.contents.edits.edit;
@@ -234,7 +233,7 @@ function FOVEditRuleClass() {
         // console.log("$visible_faces", visible_faces);
         // console.log("center_viewport_x, center_viewport_y", center_viewport_x, center_viewport_y);
         let predictedViewport;
-        if (predictWindow >=3){
+        if (predictWindow > 1){
             // RIDGE REGRESSION
             predictedViewport = $scope.predict_center_viewport(predictWindow*frameRate, ridge = true);
         }
@@ -246,7 +245,7 @@ function FOVEditRuleClass() {
         let predict_center_viewport_x = predictedViewport[0];
         let predict_center_viewport_y = predictedViewport[1];
 
-        console.log("currentSegmentPlayback: ", currentSegmentPlayback,"currentSegmentNumber: ", currentSegmentNumber, "Predict windows: ", currentSegmentNumber -  currentSegmentPlayback);
+        // console.log("currentSegmentPlayback: ", currentSegmentPlayback,"currentSegmentNumber: ", currentSegmentNumber, "Predict windows: ", currentSegmentNumber -  currentSegmentPlayback);
 
         if (currentSegmentNumber == segmentWithEdit){
            let result = getNearestRegionOfInterest(predict_center_viewport_x, editInfo);
