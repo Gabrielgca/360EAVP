@@ -204,7 +204,7 @@ app.controller('HomeController', function($scope) {
           }
       ];
       //IMPORTANT - List of ABR rules
-      $scope.rules = ["FOVRule", "HighestBitrateRule", "LowestBitrateRule", "FOVContentRule", "FOVEditRule", "DefaultRule"];  // [For seeting the ABR rule] All the available preset ABR rules
+      $scope.rules = ["FOVRule", "HighestBitrateRule", "LowestBitrateRule", "FOVEditRule", "DefaultRule"];  // [For seeting the ABR rule] All the available preset ABR rules
       $scope.chartOptions = {  // [For printing the chart] Set up the style of the charts
           legend: {
               labelBoxBorderColor: '#ffffff',
@@ -844,9 +844,6 @@ app.controller('HomeController', function($scope) {
                           case "LowestBitrateRule":
                               $scope.players[$scope.playerCount].addABRCustomRule('qualitySwitchRules', 'LowestBitrateRule', LowestBitrateRule);
                               break;                            
-                          case "FOVContentRule":
-                              $scope.players[$scope.playerCount].addABRCustomRule('qualitySwitchRules', 'FOVContentRule', FOVContentRule);
-                              break;
                           case "FOVEditRule":
                               $scope.players[$scope.playerCount].addABRCustomRule('qualitySwitchRules', 'FOVEditRule', FOVEditRule);
                               break;
