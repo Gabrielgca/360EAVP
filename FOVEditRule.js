@@ -1,9 +1,5 @@
 var FOVEditRule;
 
-
-// Verificar caso em que existe um buffer mais cheio que outro e uma edição irá acontecer
-// É necessário deixar guardado que aquela edição irá acontecer pra quando a face com menor buffer fizer a requisição
-// Faça como as demais faces
 function FOVEditRuleClass() {
 
     let factory = dashjs.FactoryMaker;
@@ -202,20 +198,6 @@ function FOVEditRuleClass() {
         ////////////////////////////////////////////////////
         ////////////////////////////////////////////////////
         ////////////////////////////////////////////////////
-
-        // Qual a regra?
-        // Pegar a média da taxa de transmissão da forma acima
-        // O resultado dela será a qualidade máxima que uma face pode ter
-        // Pegar quais faces estão visíveis
-        // Mudar o peso que se dá a porcentagem do que está visível dependendo do que está sendo visto
-        // Se uma face não está praticamente sendo vista: Uma qualidade a menos
-        // Se duas faces estão bem vistas: 50/50
-        // Se três faces estão sendo vistas: usar porcentagem
-        // Se quatro faces estão visíveis, muito provavelmente duas delas estão bem pouco visíveis. Usar uma qualidade a menos para elas
-        // Faces que não estão sendo vísiveis, pior qualidade
-        // O que fazer quando houver uma edição programada? Precisa ver qual o segmento que está sendo requisitado
-
-        // Fazer a verificação de quantas vezes a face com pouca qualidade estava bem visível. (>50%)
 
         var info = abrController.getSettings().info;
 
