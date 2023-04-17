@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+		<meta charset="utf-8"/>
+		<title>VRE_PLAYER</title>
+
+		<script src="../app/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+		<script src="../app/lib/angular/angular.min.js"></script>
+		<script src="../app/lib/angular/angular-resource.min.js"></script>
+		<script src="../app/lib/angular/angular-flot.js"></script>
+		<script src="../app/lib/angular/angular-route.js"></script>
+		
+		<script src="../video_frame/VideoFrame.min.js"></script>
+
+		<script src="../aframe/dist/aframe-master.js"></script>
+		<script src="../viewport_utils/faceStructure.js"></script>
+		<script src="../viewport_utils/viewportUtils.js"></script>
+		
+		<script>
+		const sample_cadence = 500; // miliseconds
+
+		function convert_normalized_to_degree(cvp_norm) {
+				return 360*cvp_norm - 180;
+		};
+
+		function convert_normalized_to_radians(cvp_norm) {
+			return 2*Math.PI*cvp_norm - Math.PI;
+		};
+
+		var head_position_2_face_visible = []
+		var current_quaternion;
+	
+		AFRAME.registerComponent('do-something-on-head-movement', {
+		init: function () {
+
+			this.tick = AFRAME.utils.throttleTick(this.tick, sample_cadence, this);
+			var scene = document.querySelector('a-scene');
+
+			var camera_reference = scene.children[2]; //camera_reference
+
+			var faceStructureAux = {};
+
+			//This is made to make a deep copy from the faceStrucute object, including its THREE.Vector3() objects
+			for (var face in faceStructure) {
+					let listPosition = []
+					faceStructureAux[face] = listPosition;
+					for (var position = 0; position < faceStructure[face].length; position++){
+					listPosition.push(faceStructure[face][position].clone());
+					}
+				}
+			//Input the face map so that it can be used when some edit happens
+			camera_reference.faceStructure = faceStructureAux;
+			
+			camera_reference.videoFrames = {}
+
+			// for (let i = 0; i < camera_reference.children.length; i++){
+				console.log("i video_0");
+
+				let videoFrame = VideoFrame({
+                        id : "video_0" ,
+                        frameRate: FrameRates.high,
+                        callback : function(response) {
+                            console.log('callback response: ' + response);
+                        }
+                        });
+				camera_reference.videoFrames["video_0"] = videoFrame;
+			// }
+			console.log("camera_reference", camera_reference);
+		},
+		tick: function(t,dt)
+		{
+			// // Get Head Position
+			// var [cvp_x_radians, cvp_y_radians] = update_center_viewport();
+			// // Get Visible Faces
+			// var result = get_visible_faces(cvp_x_radians, cvp_y_radians);
+
+			// console.log("RESULT: ", result);
+		}
+		});
+
+
+
+		</script>
+		<style>
+			body {
+				background-color: #999999;
+			}
+		</style>
+		
+	</head>
+	
+    <body>
+
+		<a-scene do-something-on-head-movement>
+
+			<a-assets>
+			  	<video id="video_0" preload="auto" width="480" height="480" autoplay loop="false" crossOrigin="anonymous" muted></video>
+				<video id="video_1" preload="auto" width="480" height="480" autoplay loop="false" crossOrigin="anonymous" muted></video>
+				<video id="video_2" preload="auto" width="480" height="480" autoplay loop="false" crossOrigin="anonymous" muted></video>
+				<video id="video_3" preload="auto" width="480" height="480" autoplay loop="false" crossOrigin="anonymous" muted></video>
+				<video id="video_4" preload="auto" width="480" height="480" autoplay loop="false" crossOrigin="anonymous" muted></video>
+				<video id="video_5" preload="auto" width="480" height="480" autoplay loop="false" crossOrigin="anonymous" muted></video>
+				<audio id="audio"   crossOrigin="anonymous"></audio>  
+				<img id="sky_img" src="../img/picachu.jpg">
+			</a-assets>
+
+			
+			<a-sky id="sky-sphere" color="#000000" radius="200" opacity= "0" rotation="0 -90 0" animation="property: opacity; from: 0; to:1; loop: 2; dir: alternate; dur:2000; startEvents: startFadeEffect;  pauseEvents: pauseFadeEffect; resumeEvents: resumeFadeEffect;"></a-sky>
+
+			<a-entity id="video_camera"
+					  position="0 1.6 0"
+					  material="opacity: 0; transparent: true"
+					  visible="true">
+
+					  
+			   <a-entity id="ent_video_0"
+					  material=" shader: flat; src: #video_0"
+					  geometry="primitive: plane; width: 480; height: 480;"
+					  position="240 0 0"
+					  rotation="0 -90 0"
+					  visible="true">
+			  </a-entity>
+			  <a-entity id="ent_video_1"
+					  material="shader: flat; src: #video_1"
+					  geometry="primitive: plane; width: 480; height: 480;"
+					  position="-240 0 0"
+					  rotation="0 90 0"
+					  visible="true">
+			  </a-entity>
+			  <a-entity id="ent_video_2"
+					  material="shader: flat; src: #video_2"
+					  geometry="primitive: plane; width: 480; height: 480;"
+					  position="0 240 0"
+					  rotation="90 0 0"
+					  visible="true">
+			  </a-entity>
+			  <a-entity id="ent_video_3"
+					  material="shader: flat; src: #video_3"
+					  geometry="primitive: plane; width: 480; height: 480;"
+					  position="0 -240 0"
+					  rotation="-90 0 0"
+					  visible="true">
+			  </a-entity>
+			  <a-entity id="ent_video_4"
+					  material="shader: flat; src: #video_4"
+					  geometry="primitive: plane; width: 480; height: 480;"
+					  position="0 0 -240"
+					  rotation="0 0 0"
+					  visible="true">
+			  </a-entity>
+			  <a-entity id="ent_video_5"
+					  material="shader: flat; src: #video_5"
+					  geometry="primitive: plane; width: 480; height: 480;"
+					  position="0 0 240"
+					  rotation="0 180 0"
+					  visible="true">
+			  </a-entity>
+
+<!-- 	 			<a-entity material="shader: flat; src: #audio"
+					  geometry="primitive: plane; width: 1; height: 1;"
+					  position="0 0 0"
+					  rotation="0 0 0"
+					  visible="true">
+			  </a-entity> -->
+
+			</a-entity>
+			
+			
+		</a-scene>
+
+	</body>
+
+	
+
+	
+</html>

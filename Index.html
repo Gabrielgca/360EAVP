@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="app/lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="app/lib/bootstrap/css/bootstrap-theme.css">
+  <link rel="stylesheet" href="app/lib/bootstrap/css/bootstrap-glyphicons.css">
+  <link rel="stylesheet" href="app/css/main.css">
+  <link rel="stylesheet" href="app/contrib/akamai/controlbar/controlbar.css">
+    
+  <title>VR Player</title>
+  <script src="app/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+  <script src="app/lib/angular/angular.min.js"></script>
+  <script src="app/lib/angular/angular-resource.min.js"></script>
+  <script src="app/lib/angular/angular-flot.js"></script>
+  <script src="app/lib/angular/angular-route.js"></script>
+  
+  <script src="app/lib/bootstrap/js/bootstrap.min.js"></script>
+  
+  <script src="app/lib/flot/jquery.flot.min.js"></script>
+  <script src="app/lib/flot/jquery.flot.resize.min.js"></script>
+  <script src="app/lib/flot/jquery.flot.axislabels.js"></script>
+  
+  <script src="app/contrib/cast_sender.js"></script>
+  <script src="app/contrib/akamai/controlbar/ControlBar.js"></script>
+  
+  <script src="dash.js/dist/dash.all.debug.js"></script>
+  <script src="app/main.js"></script>
+  <script src="edit/editInfo.js"></script>
+  <script src="edit/dynamicEdit.js"></script>
+  
+  <script src="aframe/dist/aframe-master.js"></script>
+  <script src="viewport_utils/faceStructure.js"></script>
+  <script src="viewport_utils/viewportUtils.js"></script>
+  
+  <script src="FOVRule.js" class="code"></script>
+  <script src="MyThroughputRule.js" class="code"></script>
+  <script src="HighestBitrateRule.js" class="code"></script>
+  <script src="LowestBitrateRule.js" class="code"></script>
+  <script src="FOVContentRule.js" class="code"></script>
+  <script src="FOVEditRule.js" class="code"></script>
+
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">VR Player</a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/">Home</a></li>
+            <li><a href="#/about">About</a></li>
+            <li><a href="#/contact">Contact</a></li>
+            <li><a href="#/player">Player</a></li>
+          </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+      <ng-view></ng-view>
+  </div>
+</body>
+</html>
